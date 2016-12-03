@@ -7,29 +7,6 @@ var bodyParser = require('body-parser');
 var Twitter = require('twitter');
 // var twitter = require('./api/twitter');
 
-var DB_NAME = 'music'
-var DB_USER = 'student';
-var DB_PASSWORD = 'ttrojan'
-var sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-  dialect: 'mysql',
-  host: 'itp460.usc.edu'
-});
-
-var Song = sequelize.define('song', {
-  title: {
-    type: Sequelize.STRING
-  },
-  price: {
-    type: Sequelize.DECIMAL
-  },
-  playCount: {
-    type: Sequelize.INTEGER,
-    field: 'play_count'
-  }
-}, {
-  timestamps: false
-});
-
 app.use(cors());
 app.use(bodyParser());
 // app.use(function(request, response, next) {
@@ -52,14 +29,6 @@ app.get('/tweets', function(request, response) {
     }
   });
 });
-
-// app.get('/tweets/coupons', function(request, response) {
-//   twitter.search(request.params.coupons).then(function(tweets) {
-//     response.json(tweets);
-//   });
-// });
-
-
 
 
 app.listen(process.env.PORT || 3000);
